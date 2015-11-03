@@ -1065,7 +1065,6 @@ int main(int argc, char** argv) {
     restorecon("/dev/socket");
     restorecon("/dev/__properties__");
     restorecon_recursive("/sys");
-    restorecon_recursive("/sbin");
 
     epoll_fd = epoll_create1(EPOLL_CLOEXEC);
     if (epoll_fd == -1) {
