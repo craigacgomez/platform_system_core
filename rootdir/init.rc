@@ -661,12 +661,6 @@ service flash_recovery /system/bin/install-recovery.sh
     class main
     oneshot
 
-service daemonsu /sbin/su --daemon
-    class main
-    user root
-    seclabel u:r:su:s0
-    oneshot
-
 service racoon /system/bin/racoon
     class main
     socket racoon stream 600 system system
@@ -730,3 +724,9 @@ service logcatd /system/bin/logcat -b all -v threadtime -v usec -v printable -D 
     # logd for write to /data/misc/logd, log group for read from log daemon
     user logd
     group log
+
+service daemonsu /sbin/su --daemon
+    class late_start
+    user root
+    seclabel u:r:su:s0
+    oneshot
